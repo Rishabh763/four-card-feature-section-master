@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Four card feature section</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+      /* Box sizing rules */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Remove default margin */
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      figure,
+      blockquote,
+      dl,
+      dd {
+        margin-block-end: 0;
+      }
+
+      /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+      ul[role="list"],
+      ol[role="list"] {
+        list-style: none;
+      }
+
+      /* Set core root defaults */
+      html:focus-within {
+        scroll-behavior: smooth;
+      }
+
+      /* A elements that don't have a class get default styles */
+      a:not([class]) {
+        text-decoration-skip-ink: auto;
+      }
+
+      /* Make images easier to work with */
+      /* img,
+      picture {
+        max-width: 100%;
+        display: block;
+      } */
+
+      /* Inherit fonts for inputs and buttons */
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+      @media (prefers-reduced-motion: reduce) {
+        html:focus-within {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      :root{
+        --fs-100 : 15px;
+
+        --clr-primary-Red: hsl(0, 78%, 62%);
+        --clr-primary-Cyan: hsl(180, 62%, 55%);
+        --clr-primary-Orange: hsl(34, 97%, 64%);
+        --clr-primary-Blue: hsl(212, 86%, 64%);
+
+
+        --clr-neutral-500: hsl(234, 12%, 34%);
+        --clr-neutral-400: hsl(229, 6%, 66%);
+        --clr-neutral-100: hsl(0, 0%, 98%);
+      }
+
+      body {
+        
+        font-family: poppins, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+          "Helvetica Neue", sans-serif, sans-serif;
+          text-rendering: optimizeSpeed;
+          line-height: 1.5;
+          background-color: var(--clr-neutral-100);
+          color: var(--clr-neutral-500);
+        }
+        
+        main{
+        min-height: 100vh;
+        margin-inline: auto;
+        max-width: 1920px;
+        padding: 1rem 2rem;
+      }
+
+      p{
+        font-size: var(--fs-100);
+        font-weight: 200;
+      }
+
+      h1,
+      p{
+        width: 40%;
+        margin: auto;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      h1{
+        font-weight: 600;
+        line-height: 1.2;
+      }
+
+      h1 span{
+        font-weight: 200;
+      }
+
+      container{
+        max-width: 1440px;
+        margin-inline: auto;
+        display: grid;
+        gap: 2rem;
+        grid-template-areas:
+        '. b .'
+        'a b c'
+        'a d c'
+        '. d .'
+        ;
+        grid-template-columns: repeat(3,1fr);
+        padding: 1rem 2rem ;
+
+      }
+
+      container>.card{
+        position: relative;
+        padding: 2rem;
+        background-color: var(--clr-neutral-100);
+        box-shadow:0 5px 20px 1px var(--clr-neutral-400) ;
+        
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+
+
+        border-radius: 0.5rem;
+        overflow: hidden;
+      }
+
+      container>.card::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 5px;
+        top: 0;
+        left: 0;
+
+        z-index: 1;
+      }
+
+    
+      container>.card:nth-child(1){
+        grid-area: a;
+      }
+      container>.card:nth-child(2){
+        grid-area: b;
+      }
+      container>.card:nth-child(3){
+        grid-area: d;
+        
+      }
+      container>.card:nth-child(4){
+        grid-area: c;
+      }
+
+      container>.card:nth-child(1)::after{
+        background-color: var(--clr-primary-Blue);
+      }
+      container>.card:nth-child(2)::after{
+        background-color: var(--clr-primary-Red);
+      }
+      container>.card:nth-child(3)::after{
+        background-color: var(--clr-primary-Orange);
+      }
+      container>.card:nth-child(4)::after{
+        background-color: var(--clr-primary-Cyan);
+      }
+
+      container>.card>h2{
+        font-weight: 400;
+      }
+
+      container>.card>p{
+        width: auto;
+        margin: 0;
+        text-align: left;
+      }
+      container>.card>img{
+        align-self: flex-end;
+        width: 4rem;
+      }
+
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      @media (max-width: 700px) and (min-width:400px){
+        h1,
+        p{
+        width: 80%;
+        margin: auto;
+      }
+
+        container{
+          gap: 1rem;
+          padding-inline: 0rem;
+        }
+
+      }
+
+      @media (max-width: 400px){
+        body{
+          padding: 1rem;
+        }
+
+        h1,
+        p{
+        width: 100%;
+        }
+
+        container{
+          padding-inline: 0rem;
+          grid-template-areas:
+          'a'
+          'b'
+          'd'
+          'c'
+          ;
+        grid-template-columns: repeat(1,1fr);
+
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1>
+        <span>Reliable, efficient delivery</span><br/>
+        Powered by Technology
+      </h1>
+      <p>
+        Our Artificial Intelligence powered tools use millions of project data
+        points to ensure that your project is successful
+      </p>
+      <container>
+        <div class="card">
+          <h2>Supervisor</h2>
+          <p>Monitors activity to identify project roadblocks</p>
+          <img src="./images/icon-supervisor.svg" alt="" />
+        </div>
+        <div class="card">
+          <h2>Team Builder</h2>
+          <p>
+            Scans our talent network to create the optimal team for your project
+          </p>
+          <img src="./images/icon-team-builder.svg" alt="" />
+        </div>
+        <div class="card">
+          <h2>Karma</h2>
+          <p>Regularly evaluates our talent to ensure quality</p>
+          <img src="./images/icon-karma.svg" alt="" />
+        </div>
+        <div class="card">
+          <h2>Calculator</h2>
+          <p>Uses data from past projects to provide better delivery estimates</p>
+          <img src="./images/icon-calculator.svg" alt="" />
+        </div>
+      </container>
+      
+      <footer>
+        <p class="attribution">
+          Challenge by
+          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+          >. Coded by <a href="#">Your Name Here</a>.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
